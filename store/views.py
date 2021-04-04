@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
-
+from cart.forms import CartAddProductForm
 
 from .models import Category, Product
 
@@ -14,6 +14,7 @@ class ProductListView(ListView):
 class ProductDetailView(DetailView):
     model = Product
     context_object_name = 'product'
+    extra_context = {"form": CartAddProductForm()}
 
 class ProductCreateView(CreateView):
     model = Product
